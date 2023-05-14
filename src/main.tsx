@@ -1,6 +1,6 @@
 import { UseArePackagesInstalledParam,useArePackagesInstalled  } from '@deep-foundation/react-use-are-packages-installed';
 
-export function WithInstalledPackage (param: WithPackageInstalledParam): JSX.Element {
+export function WithPackagesInstalled (param: WithPackagesInstalledParam): JSX.Element {
   const { children , renderIfError,renderIfLoading,renderIfNotInstalled, ...useArePackagesInstalledParams} = param;
 
   const { packageInstallationStatuses, loading, error } = useArePackagesInstalled({
@@ -26,7 +26,7 @@ export function WithInstalledPackage (param: WithPackageInstalledParam): JSX.Ele
   } 
 };
 
-export type WithPackageInstalledParam = UseArePackagesInstalledParam & {
+export type WithPackagesInstalledParam = UseArePackagesInstalledParam & {
   renderIfLoading: () => JSX.Element;
   renderIfError: (error: Error) => JSX.Element;
   renderIfNotInstalled: (packageNames: string[]) => JSX.Element;
