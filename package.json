@@ -1,0 +1,26 @@
+{
+  "name": "@deep-foundation/react-with-package-installed",
+  "keywords": [
+    "deep-package",
+    "deep-package-integration"
+  ],
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deep-foundation/react-with-package-installed"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "peerDependencies": {
+    "@deep-foundation/react-use-is-package-installed": "^0.0.2"
+  }
+}
