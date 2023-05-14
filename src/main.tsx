@@ -1,28 +1,34 @@
-import { UseIsPackageInstalledParam, useIsPackageInstalled } from '@deep-foundation/react-use-is-package-installed';
+import { UseArePackagesInstalledParam,useArePackagesInstalled  } from '@deep-foundation/react-use-are-packages-installed';
 
 export function WithInstalledPackage (param: WithPackageInstalledParam): JSX.Element {
-  const { packageName, shouldIgnoreResultWhenLoading, onError, children , errorChildren,loadingChildren, notInstalledChildren} = param;
+  const { children , renderIfError,renderIfLoading,renderIfNotInstalled, ...useArePackagesInstalledParams} = param;
 
-  const { isPackageInstalled, loading, error } = useIsPackageInstalled({
-    packageName,
-    shouldIgnoreResultWhenLoading,
-    onError,
+  const { packageInstallationStatuses, loading, error } = useArePackagesInstalled({
+    ...useArePackagesInstalledParams
   });
 
   if (loading) {
-    return loadingChildren
+    return renderIfLoading()
   }
 
-  if (error) {
-    return errorChildren; 
+  if (error || packageInstallationStatuses === undefined) {
+    return renderIfError(error); 
   }
 
-  return isPackageInstalled ? children : notInstalledChildren;
+  const notINstalledPackageNames = Object.entries(packageInstallationStatuses)
+    .filter(([packageName, packageInstallationStatus]) => !packageInstallationStatus)
+    .map(([packageName, packageInstallationStatus]) => packageName);
+
+  if(notINstalledPackageNames.length !== 0) {
+    return renderIfNotInstalled(notINstalledPackageNames)
+  } else {
+    return children
+  } 
 };
 
-export type WithPackageInstalledParam = UseIsPackageInstalledParam & {
-  loadingChildren: JSX.Element;
-  errorChildren: JSX.Element;
-  notInstalledChildren: JSX.Element;
+export type WithPackageInstalledParam = UseArePackagesInstalledParam & {
+  renderIfLoading: () => JSX.Element;
+  renderIfError: (error: Error) => JSX.Element;
+  renderIfNotInstalled: (packageNames: string[]) => JSX.Element;
   children: JSX.Element;
 };
