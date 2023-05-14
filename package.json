@@ -4,7 +4,7 @@
     "deep-package",
     "deep-package-integration"
   ],
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A wrapper component for the useIsPackageInstalled react hook from the @deep-foundation/use-is-package-installed package",
   "repository": {
     "type": "git",
