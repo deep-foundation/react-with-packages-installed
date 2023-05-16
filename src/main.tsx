@@ -1,6 +1,6 @@
 import { UseArePackagesInstalledParam,useArePackagesInstalled  } from '@deep-foundation/react-use-are-packages-installed';
 
-export function WithPackagesInstalled (param: WithPackagesInstalledParam): JSX.Element {
+export function WithPackagesInstalled (param: WithPackagesInstalledParam): JSX.Element|null {
   const { children , renderIfError,renderIfLoading,renderIfNotInstalled, ...useArePackagesInstalledParams} = param;
 
   const { packageInstallationStatuses, loading, error } = useArePackagesInstalled({
@@ -11,8 +11,12 @@ export function WithPackagesInstalled (param: WithPackagesInstalledParam): JSX.E
     return renderIfLoading()
   }
 
-  if (error || packageInstallationStatuses === undefined) {
+  if (error) {
     return renderIfError(error); 
+  }
+
+  if(packageInstallationStatuses === undefined) {
+    return null
   }
 
   const notINstalledPackageNames = Object.entries(packageInstallationStatuses)
