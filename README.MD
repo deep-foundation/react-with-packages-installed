@@ -6,15 +6,21 @@ This package provides a component that wraps the react hook `useArePackageInstal
 
 # How to use?
 
-```ts
-<WithInstalledPackages
-  packageNames={["your-package-name0", "your-package-name1"]}
-  shouldIgnoreResultWhenLoading={false}
-  onError={onError}
-  loadingChildren={<div>Loading...</div>}
-  errorChildren={<div>Error occurred</div>}
-  notInstalledChildren={<div>your-package-name is not installed</div>}
+```tsx
+<WithPackagesInstalled
+  packageNames={["package-name0", "package-name1"]}
+  renderIfError={(error) => <div>{error.message}</div>}
+  renderIfNotInstalled={(packageNames) => (
+    <div>
+      {`Install these deep packages to proceed: ${packageNames.join(', ')}`}
+    </div>
+  )}
+  renderIfLoading={() => (
+    <Text>Checking if deep packages are installed...</Text>
+  )}
+  shouldIgnoreResultWhenLoading={true}
 >
   <Content />
-</WithInstalledPackage>
+</WithPackagesInstalled>;
+
 ```
