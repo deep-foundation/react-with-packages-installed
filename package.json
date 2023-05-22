@@ -1,13 +1,14 @@
 {
-  "name": "@deep-foundation/react-with-package-installed",
+  "name": "@deep-foundation/react-with-packages-installed",
   "keywords": [
     "deep-package",
     "deep-package-integration"
   ],
-  "version": "0.0.2",
+  "version": "0.3.1",
+  "description": "A wrapper component for the useIsPackageInstalled react hook from the @deep-foundation/use-is-package-installed package",
   "repository": {
     "type": "git",
-    "url": "https://github.com/deep-foundation/react-with-package-installed"
+    "url": "https://github.com/deep-foundation/react-with-packages-installed"
   },
   "scripts": {
     "build": "tsc"
@@ -21,6 +22,6 @@
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "@deep-foundation/react-use-is-package-installed": "~0.0.2"
+    "@deep-foundation/react-use-are-packages-installed": "~0.1.1"
   }
 }
