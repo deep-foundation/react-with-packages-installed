@@ -21,6 +21,6 @@
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "@deep-foundation/react-use-is-package-installed": "^0.0.2"
+    "@deep-foundation/react-use-is-package-installed": "~0.0.2"
   }
 }
