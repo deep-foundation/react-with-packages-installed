@@ -1,34 +1,46 @@
-import { UseArePackagesInstalledParam,useArePackagesInstalled  } from '@deep-foundation/react-use-are-packages-installed';
+import {
+  UseArePackagesInstalledParam,
+  useArePackagesInstalled,
+} from '@deep-foundation/react-use-are-packages-installed';
 
-export function WithPackagesInstalled (param: WithPackagesInstalledParam): JSX.Element|null {
-  const { children , renderIfError,renderIfLoading,renderIfNotInstalled, ...useArePackagesInstalledParams} = param;
-
-  const { packageInstallationStatuses, loading, error } = useArePackagesInstalled({
+export function WithPackagesInstalled(
+  param: WithPackagesInstalledParam
+): JSX.Element | null {
+  const {
+    children,
+    renderIfError,
+    renderIfLoading,
+    renderIfNotInstalled,
     ...useArePackagesInstalledParams
-  });
+  } = param;
+
+  const { packageInstallationStatuses, loading, error } =
+    useArePackagesInstalled({
+      ...useArePackagesInstalledParams,
+    });
 
   if (loading) {
-    return renderIfLoading()
+    return renderIfLoading();
   }
 
   if (error) {
-    return renderIfError(error); 
+    return renderIfError(error);
   }
 
-  if(packageInstallationStatuses === undefined) {
-    return null
+  if (packageInstallationStatuses === undefined) {
+    return null;
   }
 
-  const notINstalledPackageNames = Object.entries(packageInstallationStatuses)
-    .filter(([packageName, packageInstallationStatus]) => !packageInstallationStatus)
-    .map(([packageName, packageInstallationStatus]) => packageName);
+  const notInstalledPackageNames = Object.entries(packageInstallationStatuses)
+    .filter(([packageName, isPackageInstalled]) => !isPackageInstalled)
+    .map(([packageName, isPackageInstalled]) => packageName);
 
-  if(notINstalledPackageNames.length !== 0) {
-    return renderIfNotInstalled(notINstalledPackageNames)
+  if (notInstalledPackageNames.length === 0) {
+    return children;
   } else {
-    return children
-  } 
-};
+    return renderIfNotInstalled(notInstalledPackageNames);
+  }
+}
 
 export type WithPackagesInstalledParam = UseArePackagesInstalledParam & {
   renderIfLoading: () => JSX.Element;
