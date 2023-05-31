@@ -1,7 +1,7 @@
 import {
   UseArePackagesInstalledParam,
   useArePackagesInstalled,
-} from '@deep-foundation/react-use-are-packages-installed';
+} from '@deep-foundation/react-use-are-packages-installed/dist/main.js';
 
 export function WithPackagesInstalled(
   param: WithPackagesInstalledParam
