@@ -1,5 +1,6 @@
 {
   "name": "@deep-foundation/react-with-packages-installed",
+  "type": "module",
   "keywords": [
     "deep-package",
     "deep-package-integration"
