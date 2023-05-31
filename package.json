@@ -1,10 +1,11 @@
 {
   "name": "@deep-foundation/react-with-packages-installed",
+  "type": "module",
   "keywords": [
     "deep-package",
     "deep-package-integration"
   ],
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "A wrapper component for the useArePackageInstalled react hook from the @deep-foundation/use-are-package-installed package",
   "repository": {
     "type": "git",
