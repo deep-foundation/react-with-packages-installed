@@ -23,6 +23,6 @@
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
-    "@deep-foundation/react-use-are-packages-installed": "^0.3.0"
+    "@deep-foundation/react-use-are-packages-installed": "^1.0.1"
   }
 }
