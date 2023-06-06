@@ -2,7 +2,7 @@
 
 # Goal
 
-This package provides a component that wraps the react hook `useArePackageInstalled` from the package [`@deep-foundation/use-are-packages-installed`](https://www.npmjs.com/package/@deep-foundation/use-are-packages-installed). Loading, error, not installed and installed states are handled by the components you pass.
+This package provides a component that wraps the react hook `useArePackageInstalled` from the package [`@deep-foundation/react-use-are-packages-installed`](https://www.npmjs.com/package/@deep-foundation/react-use-are-packages-installed). Loading, error, not installed and installed states are handled by the components you pass.
 
 # How to use?
 
